@@ -1,10 +1,16 @@
 name: Create Pull Request
 
 on:
-  workflow_dispatch:
+  pull_request:
+   branches:
+    - test-branch-02
+   types:
+    - closed
+
 
 jobs:
   createPullRequest:
+     if: github.event.pull_request.merged == true
      runs-on: ubuntu-latest
 
      steps:
@@ -18,9 +24,9 @@ jobs:
         - name: Create Pull Request
           uses: peter-evans/create-pull-request@v7
           with:
-            token: ${{ secrets.GITHUB_TOKEN }}
-            title: 'Automated Update'
-            body: 'This pull request updates the report file.'
-            branch: test-branch-02
-            base: test-branch-01
-            reviewers: 'saiteja2290'
+              token: ${{ secrets.GITHUB_TOKEN }}
+              title: 'Automated Update'
+              body: 'This pull request updates the report file.'
+              branch: test-branch-02
+              base: test-branch-03
+              reviewers: 'saiteja2290'
