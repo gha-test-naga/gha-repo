@@ -28,5 +28,5 @@ jobs:
               title: 'Automated Update'
               body: 'This pull request updates the report file.'
               branch: test-branch-02
-              base: test-branch-03
+              base: test-branch-01
               reviewers: 'saiteja2290'
